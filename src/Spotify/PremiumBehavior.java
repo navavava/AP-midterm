@@ -12,7 +12,7 @@ public class PremiumBehavior implements UserBehavior {
 
     @Override
     public void createPlaylist(String title, User owner) {
-        if (title.isEmpty() || title.equals("null"))
+        if (title.isEmpty() || title == null)
             throw new InvalidOperationException("Choose a valid title!");
         Playlist playlist = new Playlist(title, owner);
         owner.playlists.add(playlist);

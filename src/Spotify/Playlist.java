@@ -8,7 +8,7 @@ public class Playlist {
     public User owner;
 
     public Playlist(String title, User owner) {
-        if (title.isEmpty() || title.equals("null"))
+        if (title.isEmpty() || title == null)
             throw new InvalidOperationException("Choose a valid title!");
         this.title = title;
         this.owner = owner;
@@ -17,7 +17,7 @@ public class Playlist {
     public void editTitle(String password, String title) {
         if (!(owner.getPassword().equals(password)))
             throw new InvalidOperationException("Wrong password!");
-        if (title.isEmpty() || title.equals("null"))
+        if (title.isEmpty() || title == null)
             throw new InvalidOperationException("Choose a valid title!");
         this.title = title;
     }

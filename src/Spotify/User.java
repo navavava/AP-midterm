@@ -12,7 +12,7 @@ public class User {
     public static ArrayList<User> allUsers = new ArrayList<>();
 
     public User(String username, String password) {
-        if (username.isEmpty() || username.equals("null") || password.equals("null") || password.isEmpty())
+        if (username.isEmpty() || (username == null) || (password == null) || password.isEmpty())
             throw new InvalidOperationException("Your information cannot be blank!");
         if (password.length() < 8)
             throw new InvalidOperationException("Your password must be 8 characters or longer!");
