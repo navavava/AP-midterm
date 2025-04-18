@@ -1,10 +1,10 @@
 package Spotify;
 
-public class RegularBehavior implements UserBehavior{
+public class RegularBehavior implements UserBehavior {
 
     public int playingLimit = 5;
 
-    public RegularBehavior(){
+    public RegularBehavior() {
 
     }
 
@@ -15,14 +15,14 @@ public class RegularBehavior implements UserBehavior{
 
     @Override
     public void playMusic(Music music) {
-        if(playingLimit <= 0)
+        if (playingLimit <= 0)
             throw new InvalidOperationException("Your playing limit is reached!");
-        //play method
+        music.play();
         playingLimit--;
     }
 
     @Override
     public void buyPremium(User owner, int month) {
-        //update behavior
+        owner.behavior = new PremiumBehavior(month);
     }
 }

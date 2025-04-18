@@ -9,8 +9,14 @@ public class Music {
     public int numberOfStream = 0;
     public static ArrayList<Music> allMusics = new ArrayList<>();
 
-    public void play(String title, User singer) {
-        System.out.println(title + " from " + singer.username + " is playing.");
+    public Music(String title, User singer) {
+
+        this.title = title;
+        this.singer = singer;
+    }
+
+    public void play() {
+        System.out.println(this.title + " from " + this.singer.username + " is playing.");
         numberOfStream++;
     }
 

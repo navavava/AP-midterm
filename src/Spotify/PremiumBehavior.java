@@ -1,25 +1,33 @@
 package Spotify;
 
-public class PremiumBehavior implements UserBehavior{
+public class PremiumBehavior implements UserBehavior {
 
-    int month;
+    private int month = 0;
 
-    public PremiumBehavior(){
-
+    public PremiumBehavior(int month) {
+        if (month < 0)
+            throw new InvalidOperationException("Invalid premium duration!");
+        this.month += month;
     }
 
     @Override
-    public void createPlaylist(String Title, User Owner) {
-
+    public void createPlaylist(String title, User owner) {
+        if (title.isEmpty() || title.equals("null"))
+            throw new InvalidOperationException("Choose a valid title!");
+        Playlist playlist = new Playlist(title, owner);
+        owner.playlists.add(playlist);
     }
 
     @Override
     public void playMusic(Music music) {
-
+        music.play();
     }
 
     @Override
     public void buyPremium(User owner, int month) {
+        if (month < 0)
+            throw new InvalidOperationException("Invalid premium duration!");
+        this.month += month;
 
     }
 }
