@@ -10,14 +10,12 @@ public class Playlist {
     public Playlist(String title, User owner) {
         if (title.isEmpty() || title.equals("null"))
             throw new InvalidOperationException("Choose a valid title!");
-        if (!(User.allUsers.contains(owner)))
-            throw new InvalidOperationException("This user does not exist!");
         this.title = title;
         this.owner = owner;
     }
 
     public void editTitle(String password, String title) {
-        if (!(owner.password.equals(password)))
+        if (!(owner.getPassword().equals(password)))
             throw new InvalidOperationException("Wrong password!");
         if (title.isEmpty() || title.equals("null"))
             throw new InvalidOperationException("Choose a valid title!");
@@ -25,17 +23,15 @@ public class Playlist {
     }
 
     public void addMusic(String password, Music music) {
-        if (!(owner.password.equals(password)))
+        if (!(owner.getPassword().equals(password)))
             throw new InvalidOperationException("Wrong password!");
         if (playlist.contains(music))
             throw new InvalidOperationException("This track is already in your playlist!");
-        if (!(Music.allMusics.contains(music)))
-            throw new InvalidOperationException("This track does not exist!");
         playlist.add(music);
     }
 
     public void removeMusic(String password, Music music) {
-        if (!(owner.password.equals(password)))
+        if (!(owner.getPassword().equals(password)))
             throw new InvalidOperationException("Wrong password!");
         if (!(playlist.contains(music)))
             throw new InvalidOperationException("The track you're trying to remove is not in your playlist!");
@@ -47,9 +43,4 @@ public class Playlist {
             m.play();
         }
     }
-
-    public void shuffle() {
-
-    }
-
 }

@@ -10,9 +10,9 @@ public class Music {
     public static ArrayList<Music> allMusics = new ArrayList<>();
 
     public Music(String title, User singer) {
-
         this.title = title;
         this.singer = singer;
+        allMusics.add(this);
     }
 
     public void play() {
@@ -20,21 +20,23 @@ public class Music {
         numberOfStream++;
     }
 
-    public void search(String title) {
+    public ArrayList<Music> search(String title) {
+        ArrayList<Music> results = new ArrayList<>();
         for (Music m : allMusics) {
             if (m.title.equalsIgnoreCase(title.trim()))
-                System.out.println(m.title + " - " + m.singer.username);
+                results.add(m);
         }
+        if (!(results.isEmpty()))
+            return results;
+        return null;
     }
 
-    public void search(String title, String singer) {
+    public Music search(String title, String singer) {
         for (Music m : allMusics) {
             if (m.title.equalsIgnoreCase(title.trim()) && m.singer.username.equalsIgnoreCase(singer.trim())) {
-                System.out.println(m.title + " - " + m.singer.username);
-                break;
+                return m;
             }
         }
+        return null;
     }
-
-
 }

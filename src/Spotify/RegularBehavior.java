@@ -5,7 +5,6 @@ public class RegularBehavior implements UserBehavior {
     public int playingLimit = 5;
 
     public RegularBehavior() {
-
     }
 
     @Override
