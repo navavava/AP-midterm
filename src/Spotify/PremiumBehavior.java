@@ -3,6 +3,11 @@ package Spotify;
 public class PremiumBehavior implements UserBehavior{
 
     int month;
+
+    public PremiumBehavior(){
+
+    }
+
     @Override
     public void createPlaylist(String Title, User Owner) {
 
